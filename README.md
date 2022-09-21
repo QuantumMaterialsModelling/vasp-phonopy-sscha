@@ -1,6 +1,4 @@
-##############################
-########vasp_sscha 1.0 #######
-##############################
+### vasp_sscha 1.0 ###
 
 VASP = Vienna Ab Initio Simulation Package
 SSCHA = Stochastic Self Consistent Harmonic Approximation
