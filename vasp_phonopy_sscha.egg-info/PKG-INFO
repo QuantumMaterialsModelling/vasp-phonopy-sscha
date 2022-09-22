@@ -1,3 +1,16 @@
+Metadata-Version: 2.1
+Name: vasp-phonopy-sscha
+Version: 1.0
+Summary: An interface between VASP, PHONOPY and SSCHA
+Home-page: https://github.com/luigiranalli96/vasp-phonopy-sscha
+Author: Ranalli Luigi
+Author-email: luigi.ranalli@univie.ac.at
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 ##########################################################################
 ############################ vaspsscha 1.0 ##############################
 #########################################################################

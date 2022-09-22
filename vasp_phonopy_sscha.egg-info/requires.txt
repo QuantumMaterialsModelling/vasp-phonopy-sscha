@@ -1,0 +1,7 @@
+numpy
+pandas
+scipy
+ase
+cellconstructor
+phonopy
+python-sscha
