@@ -8,7 +8,7 @@ SSCHA = Stochastic Self Consistent Harmonic Approximation
 This is the first version of the python package for the treatment of VASP and SSCHA input/output.
 
 
-### 1# HOW TO INSTALL ###
+### 1 HOW TO INSTALL ###
 
 Two ways:
 
@@ -25,13 +25,13 @@ This will store the package folder as a subdirectory of your python in use. If y
 FINAL REMARK: Wherever the package is installed, assign an alias to it in order to be able to call all the vaspsscha modules without referring to the installation path.
 
 
-### 2# FOLDER STRUCTURE ###
+### 2 FOLDER STRUCTURE ###
                                               pop_n
                                                 |
     dyn                                        data                                                    vasp
                                  -where the SSCHA ensemble are stored                            - VASP execution directory 
                                                                                                     containing the ensembles POSCARs
-### 3# HOW TO USE ###
+### 3 HOW TO USE ###
 
 vaspsscha intervenes in different points in the VASP+SSCHA workflow. All the scripts 
 reside in the same folder vaspsscha/vaspsscha. 
