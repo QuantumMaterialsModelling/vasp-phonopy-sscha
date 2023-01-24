@@ -68,13 +68,16 @@ def generate(parsed_args=None,n_random=None, n_population=None, NQIRR=None, T=No
         print("\nThis is not a valid answer, try again\n")
     ################################
     ################################SOBOL?
-    bool = input("You want to use the Sobol sequence for the confiogurations? y/n\n")
-    if bool == 'y':
-        Sobolflag = True
-    elif bool == 'n':
-        Sobolflag = False
-    else:
-        print("\nThis is not a valid answer, try again\n")
+    while (True):
+        bool = input("You want to use the Sobol sequence for the configurations? y/n\n")
+        if bool == 'y':
+            Sobolflag = True
+            break
+        elif bool == 'n':
+            Sobolflag = False
+            break
+        else:
+            print("\nThis is not a valid answer, try again\n")
     #################################
     dyn.Symmetrize()
     # dyn.save_qe("dyn_positive")
