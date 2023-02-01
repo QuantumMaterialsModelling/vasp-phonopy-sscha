@@ -24,26 +24,6 @@ This will store the package folder as a subdirectory of your python in use. If y
 
 FINAL REMARK: Wherever the package is installed, assign an alias to it in order to be able to call all the vaspsscha modules without referring to the installation path.
 
-
-### 2 FOLDER STRUCTURE ###
-                                              pop_n
-                                                |
-    dyn                                        data                                                    vasp
-                                 -where the SSCHA ensemble are stored                            - VASP execution directory 
-                                                                                                    containing the ensembles POSCARs
-### 3 HOW TO USE ###
-
-vaspsscha intervenes in different points in the VASP+SSCHA workflow. All the scripts 
-reside in the same folder vaspsscha/vaspsscha. 
-
-FIRST THINGS FIRST: you need to have executed a phonopy harmonic calculation (even of very low precision), wheter using DFPT in the unit cell or FINITE DIFFERENCES in the supercell. Furthermore, you should have extracted the force constants through PHONOPY. 
-
-THE MAIN SCRIPT
-
-interface.py
-
-1) 
-    i) Creation of the Gamma point dynamical matrix (dynq1) from the just calculated PHONOPY FC (trial harmonic guess for the SSCHA cycle)
-    ii) Interpolation on any q-grid of choice. These matrixes are grouped by reciprocal space symmetry in as many "dynq" files as the number of irreducible q* points.
-    iii) generation of the first population from the harmonic guess. In case the dynamical matrix is not positive definite (aka unstable/imaginary phonons), it can be positivized in order to be able to generate the ensembles. 
-
+                                             
+### 2 HOW TO USE ###
+A step-by-step tutorial can be found in the "tutorial" folder. The C2 diamond is taken as a test case.
