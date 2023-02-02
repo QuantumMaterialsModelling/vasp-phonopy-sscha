@@ -29,6 +29,30 @@ This step-by-step guide will guide you the workflow.
       ./pop/data contains the displacements of the stochastic ensemble from the undisplaced supercell
       ./pop/vasp contains the stochastic supercell ensembles in VASP format
       
- 5) Run the eneegies,forces,stress calculations on the stochastic ensembles
+ 5) Run the enegies,forces,stress calculations on the stochastic ensembles. In our example, we use the Machine Learning Force Field
+ implemented in VASP (ML_FF). You can try it out. At the end of the calculation we need to have:
+      ./pop/vasp/energies : a file with an ordered list (1..1000) of the GS energies of every ensemble in eV
+      ./pop/vasp/forces/forces_population1_*.dat a folder containing (1..1000) .dat files with the forces acting on each atom in an ensemble.
+ you can check out the file formats in the respective "energies" and "forces" files already given.
+ 
+ 6) Converting the energies and forces from VASP to QE format, and put them in the ./pop/data folder, as SSCHA prescribes. 
+  i) Go to the ./pop folder. Run the following scripts. Running interface.py -h will help you understanding the flags.
+  ii)  python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --en_processing 1
+  iii) python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --f_processing 1 5
+ 
+ 7) At this point, we are free to run the SSCHA minimization of the free energy wrt atomic positions and the dynamical matrix. The comments
+    on the python scripts try to make all the parameters understandable, but for any doubt, just refer to the SSCHA documentation.
+  i) python python_minimizer.py
+  
+ 8) If everyithing went smooth, you should find in ./pop/dyn/ the new dynamical matrixes. Copy them in a new ./pop2/dyn folder, and rename them as dynq*
+  i) cd ./pop2 
+  ii) python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --generate 1000 2 10 0
+  iiia) You will obtain a ./pop2/data folder with 1000 ensembles generated at 0K. 
+  iiib)If you wanted for example to interpolate to a bigger q-grid (that is, to a bigger commensurate supercell, you could have run:
+      python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --interpolate 5 6,
+      with which we are interpolate from a 5x5x5 q-mesh to a 6x6x6 q-mesh
+  iV) Create a "vasp"directory in .pop2. In order to obtain the POSCAR files in the VASP directory, run
+      python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --to_vasp 1 5
       
-    
+ Mind: As you could see, we invoke the bare interface.py just once, to go from the harmonic guess to the first population. After that, we
+ operate with interface.py --flags, to do the necessary steps one by one.
