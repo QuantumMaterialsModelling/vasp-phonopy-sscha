@@ -2,10 +2,19 @@
 ############################ vaspsscha 1.0 ##############################
 #########################################################################
 
-VASP = Vienna Ab Initio Simulation Package
-SSCHA = Stochastic Self Consistent Harmonic Approximation
 
-This is the first version of the python package for the treatment of VASP and SSCHA input/output.
+This is the first version of the python package for the treatment of VASP and SSCHA input/output, withi the aid of PHONOPY. A tutorial on C2 diamond will serve as a procedural guide, where a Machine Learning Force Field approach is adopted, as in:
+
+https://arxiv.org/pdf/2209.12036.pdf
+
+SSCHA:
+http://sscha.eu/
+
+PHONOPY:
+https://phonopy.github.io/phonopy/
+
+VASP:
+https://www.vasp.at/wiki/index.php/The_VASP_Manual
 
 
 ### 1 HOW TO INSTALL ###
