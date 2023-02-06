@@ -1,6 +1,6 @@
-##########################################################################
+########################################################################
 ############################ vaspsscha 1.0 ##############################
-#########################################################################
+#######################################################################
 
 
 This is the first version of the python package for the treatment of VASP and SSCHA input/output, withi the aid of PHONOPY. A tutorial on C2 diamond will serve as a procedural guide, where a Machine Learning Force Field approach is adopted, as in:
