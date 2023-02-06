@@ -22,6 +22,8 @@ The scripts are ready to use as they are. Wherever the package is installed, ass
 
 python setup.py install
 
+Installing numpy may give problems, so it may be needed to install it by hand.
+
                                              
 ### 2 HOW TO USE ###
 A step-by-step tutorial can be found in the "tutorial" folder. The C2 diamond is taken as a test case.
