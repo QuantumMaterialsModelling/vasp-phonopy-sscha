@@ -18,7 +18,9 @@ https://www.vasp.at/wiki/index.php/The_VASP_Manual
 
 
 ### 1 HOW TO INSTALL ###
-The scripts are ready to use as they are. Wherever the package is installed, assign an alias to it in order to be able to call all the vaspsscha modules without referring to the installation path.
+The scripts are ready to use as they are. Wherever the package is installed, assign an alias to it in order to be able to call all the vaspsscha modules without referring to the installation path. To install the dependencies:
+
+python setup.py install
 
                                              
 ### 2 HOW TO USE ###
