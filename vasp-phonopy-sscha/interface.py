@@ -129,7 +129,7 @@ class DynamicalMatrixArray():
             for col in self.dynamical_matrix:
                 self.dynamical_matrix[col] = self.dynamical_matrix[col].astype(np.float32)
                 self.dynamical_matrix[col] = self.dynamical_matrix[col].round(decimals=6)
-            self.dynamical_matrix = self.dynamical_matrix / (15.633302 * 15.633302)
+            self.dynamical_matrix = self.dynamical_matrix #/ (15.633302 * 15.633302)
             #print(self.dynamical_matrix)
             self.dynamical_matrix = self.dynamical_matrix.to_numpy()
 
@@ -283,9 +283,9 @@ if __name__ == '__main__':
 
 ######################################## HERE THE FIRST INITIALIAZATION STARTS BY TAKING THE HARMONIC COMPUTED IN VASP+PHONOPY
 
-os.system("rm -r pop")
+os.system("rm -r pop1")
 run1 = DynamicalMatrixArray(input("\nI am gonna generate the dynamical matrix in Gamma from the phonopy FC matrix. Which is your phonopy supercell? \n(if NxNxN, type N)\n"))#, unit_cell_atoms = ['O', 'O', 'O', 'K', 'Ta'], type_atoms = ['O', 'K', 'Ta'])
-os.system("mkdir dyn pop")
+os.system("mkdir dyn pop1")
 
 run1.poscar_reader()
 run1.phonopy_execution()
@@ -294,8 +294,8 @@ run1.matrix_formatting()
 run1.matrix_complexifier()
 run1.write_dyn()
 os.system("mv dynq* dyn")
-os.system("mv dyn pop")
-os.chdir("pop")
+os.system("mv dyn pop1")
+os.chdir("pop1")
 
 bool = input("\nDo you want to interpolate the dynamical matrix? y/n\n")
 if bool == 'y':
