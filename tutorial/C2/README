@@ -5,7 +5,7 @@ some explanation pertaining SSCHA will also be given. In any case, a complete gu
 
 LET'S START
 
-1) unzip the MLFF.zip folder. After that, unzip the ML_FF.zip file, that contatins an accurate Force Field for the C2 diamond.
+1) unzip the C2.zip folder. After that, unzip the ML_FF.zip file, that contatins an accurate Force Field for the C2 diamond.
 
 2) Generating the harmonic guess
   
