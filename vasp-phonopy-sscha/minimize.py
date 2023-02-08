@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from __future__ import division
 import sys,os
@@ -17,10 +19,10 @@ import numpy as np
 NQIRR = 4                     # The number of irreducible q points in the q-point grid
 T = 0                         # The temperature at which we want to perform the calculation in Kelvin
 SUPERCELL = (3,3,3)           # The size of the supercell (or the q point grid)
-N_RANDOM = 300                # The number of configurations that will be created 
+N_RANDOM = 300                # The number of configurations that will be created
 POPULATION = 1                # The population to generate
 
-# Load the dynamical matrices that generated the ensemble 
+# Load the dynamical matrices that generated the ensemble
 
 namefile='pop'+str(POPULATION)+'/dyn/dynq'
 if (POPULATION != 1):
@@ -29,7 +31,7 @@ dyn = CC.Phonons.Phonons(namefile, NQIRR)
 
 # We make a copy of the starting dynamica matrices
 
-dyn_0 = dyn 
+dyn_0 = dyn
 
 # Prepare the stochastic weights for the SSCHA minimization
 
@@ -64,12 +66,12 @@ fig, axs = plt.subplots(2,2)
 
 data = np.loadtxt(name_for_data)
 
-axs[0,0].plot(data[:,0],data[:,1]) 
+axs[0,0].plot(data[:,0],data[:,1])
 axs[0,1].plot(data[:,0],data[:,3], label='gradient')
-axs[0,1].plot(data[:,0],data[:,4], label='error') 
-axs[1,0].plot(data[:,0],data[:,5], label='gradient') 
-axs[1,0].plot(data[:,0],data[:,6], label='error') 
-axs[1,1].plot(data[:,0],data[:,7]) 
+axs[0,1].plot(data[:,0],data[:,4], label='error')
+axs[1,0].plot(data[:,0],data[:,5], label='gradient')
+axs[1,0].plot(data[:,0],data[:,6], label='error')
+axs[1,1].plot(data[:,0],data[:,7])
 
 axs[0,0].set_xlabel('Step')
 axs[1,0].set_xlabel('Step')

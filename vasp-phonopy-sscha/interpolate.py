@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import cellconstructor as CC
 import sys
 import os
@@ -18,4 +20,3 @@ def interpolate(parsed_args=None,NQIRR=None,q_points_old=None,q_points_new=None)
     os.system(f"mv dyn dyn_old"+str(q_points_old)+"x"+str(q_points_old)+"x"+str(q_points_old)+"")
     os.system("mkdir dyn")
     new_dyn.save_qe("dyn/dynq")
-
