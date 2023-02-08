@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
 
-POPULATION = 2
-
 def en_processing(pop_id=1):
     en_path = "vasp/energies"
     energies = pd.read_csv(en_path, engine='python', sep="  ",header=None)
