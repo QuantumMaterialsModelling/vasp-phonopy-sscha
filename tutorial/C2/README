@@ -44,10 +44,11 @@ LET'S START
  If feel lazy, just copy those two files into ./pop1/vasp, and go to point 6).
  
  6) Converting the energies and forces from VASP to QE format, and put them in the ./pop/data folder, as SSCHA prescribes. 
-  i) Go to the ./pop1 folder. Run the following scripts.
-  ii)  python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --en_processing 1
-  iii) python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --f_processing 1 3
-  Running interface.py -h will help you understanding these flags.
+  i) Go to the ./pop1 folder. 
+  ii) cp POSCAR vasp (we need the unit cell POSCAR in the vasp folder: it is required by the foloowing scripts)
+  iii)  python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --en_processing 1
+  iv) python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --f_processing 1 3
+  ######## Running interface.py -h will help you understanding these flags.
  
  7) At this point, we are free to run the SSCHA minimization of the free energy wrt atomic positions and the dynamical matrix. The comments
     on the python scripts try to make all the parameters understandable, but for any doubt, just refer to the SSCHA documentation.
