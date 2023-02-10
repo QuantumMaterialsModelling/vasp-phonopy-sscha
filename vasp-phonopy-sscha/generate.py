@@ -99,7 +99,7 @@ def generate(parsed_args=None,n_random=None, n_population=None, NQIRR=None, T=No
     ens.save(DATA_DIR, n_population)
 
     print("Done.")
-    os.system("rm dyn*")
+    #os.system("rm dyn*")
     os.system("mkdir data/position")
     os.system("mv data/scf_pop* data/position")
     return n_random, n_population, NQIRR
