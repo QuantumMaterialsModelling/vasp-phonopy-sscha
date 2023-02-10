@@ -58,7 +58,7 @@ LET'S START
     sscha-plot-data.py minim1 (this script is a SSCHA script. It search for the {argument}.freqs and {argument}.dat files).
 
  9) If everyithing went smooth, you should find in ./pop/dyn/ the new dynamical matrixes. Copy them in a new ./pop2/dyn folder, and rename them as dynq*
-  i) cd ./pop2 1
+  i) cd ./pop2
   ii) python /path_to_folder/vasp-phonopy-sscha-main/vasp-phonopy-sscha/interface.py --generate 500 2 4 0
   iiia) You will obtain a ./pop2/data folder with 500 ensembles generated at 0K.
   iiib)If you wanted for example to interpolate to a bigger q-grid (that is, to a bigger commensurate supercell, you could have run:
