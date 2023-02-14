@@ -10,17 +10,19 @@ echo "Number of configurations="$NCONFSSCHA
 echo "Temperature="$TEMPERATURE
 echo "============================="
 echo "Change directory to "pop$POPULATION
-$(($POPULATION+1))
-
 cd pop$POPULATION
+echo "========"+`pwd`+"======="
 cp ../POSCAR_UNITCELL POSCAR
 python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --f_processing $POPULATION $SUPERCELL_SIZE
 python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --en_processing $POPULATION
 cd ..
+echo "Editing SSCHA inputfile"
 nano minimize.py
+echo "------Running SSCHA-----"
 python3 minimize.py > minim$POPULATION.out
 echo "Change directory to "pop$(($POPULATION+1))
 cd pop$(($POPULATION+1))
+echo "========"+`pwd`+"======="
 python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --generate $NCONFSSCHA $(($POPULATION+1)) $SUPERCELL_SIZE $TEMPERATURE
 cp ../POSCAR_UNITCELL POSCAR
 python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --to_vasp $(($POPULATION+1)) $SUPERCELL_SIZE
