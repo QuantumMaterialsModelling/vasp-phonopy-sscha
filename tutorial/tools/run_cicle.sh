@@ -24,6 +24,10 @@ POPULATION=1
 kong_liu_1=`grep "Kong-Liu" minim1.out|head -1`
 kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1`
 kong_liu_ratio=0.5
+echo "============================="
+echo "Population="$POPULATION
+echo "Kong-Liu ratio="$kong_liu_ratio
+echo "============================="
 while [runner]
 do
   if [$(($kong_liu_1/$kong_liu_2)) -le $kong_liu_ratio]
