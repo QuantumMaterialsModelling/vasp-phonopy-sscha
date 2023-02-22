@@ -35,29 +35,24 @@ echo "Change directory to "pop$POPULATION
 cd pop$POPULATION
 echo "========"+`pwd`+"======="
 cp ../POSCAR_UNITCELL POSCAR
-python /home/diego/github/vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --f_processing $POPULATION $SUPERCELL_SIZE
-python /home/diego/github/vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --en_processing $POPULATION
+python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --f_processing $POPULATION $SUPERCELL_SIZE
+python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --en_processing $POPULATION
+echo "============================="
+echo "Change directory back"
 cd ..
-##echo "Editing SSCHA inputfile"
-##nano minimize.py
+echo "========"+`pwd`+"======="
 echo "------Running SSCHA-----"
-#python3 minimize.py > minim$POPULATION.out
 python3 minimize.py -pop $POPULATION -nconf $NCONFSSCHA -cell $SUPERCELL_SIZE -temp $TEMPERATURE -nqirr $NQIRR > minim$POPULATION.out
 echo "Change directory to "pop$(($POPULATION+1))
 cd pop$(($POPULATION+1))
 echo "========"+`pwd`+"======="
-python /home/diego/github/vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --generate $NCONFSSCHA $(($POPULATION+1)) $SUPERCELL_SIZE $TEMPERATURE
+python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --generate $NCONFSSCHA $(($POPULATION+1)) $SUPERCELL_SIZE $TEMPERATURE
 cp ../POSCAR_UNITCELL POSCAR
-python /home/diego/github/vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --to_vasp $(($POPULATION+1)) $SUPERCELL_SIZE
+python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --to_vasp $(($POPULATION+1)) $SUPERCELL_SIZE
 cp ../INCAR.sc vasp/INCAR
 cp ../POTCAR.SrOTi vasp/POTCAR
 cp ../ML_FF vasp/ML_FF
 mkdir vasp/forces
-# cp ../run.sh vasp/run.sh
-# nano vasp/run.sh
-#echo "---------------------------------------"
-#echo "Now is time to do the VASP calculations"
-#echo "---------------------------------------"
 echo "============================="
 echo "Change directory back"
 cd ..
@@ -77,8 +72,8 @@ then
   echo "---------------------------------------"
   echo "Now is time to do the VASP calculations"
   echo "---------------------------------------"
-  echo "Change directory to "pop$(($POPULATION+1))
-  cd pop$(($POPULATION+1))
+  echo "Change directory to "pop$(($POPULATION+1))"/vasp"
+  cd pop$(($POPULATION+1))/vasp
   echo "========"+`pwd`+"======="
   #########################################################################
   #np=40           #number of cpus
@@ -87,7 +82,7 @@ then
   #NCONFSSHA=300   #number of configurations in the sscha ensemble
   #mpirun vasp_std > stdout
   for i in `seq 1 $NCONFSSCHA`; do
-      echo "---RUN--"$i"--of--"$NCONFSSCHA
+      echo -ne "---RUN--"$i"--of--"$NCONFSSCHA"\r"
       echo `date` >> timing
       cp POSCAR_$i POSCAR
   #    mpirun -np $np vasp_std > stdout
