@@ -72,10 +72,11 @@ def sscha_run(POPULATION=1, N_RANDOM=100, SUPERCELL= (2,2,2), T=50, NQIRR=10):
 
     # Define the steps for the centroids and the force constants
 
-    minimizer.min_step_dyn = 0.5 #0.005         # The minimization step on the dynamical matrix
-    minimizer.min_step_struc = 0.5 #0.05        # The minimization step on the structure
-    minimizer.kong_liu_ratio = 0.5         # The parameter that estimates whether the ensemble is still good
-    minimizer.meaningful_factor = 0.000001 # How much small the gradient should be before I stop?
+    #minimizer.min_step_dyn = 0.5 #0.005         # The minimization step on the dynamical matrix
+    #minimizer.min_step_struc = 0.5 #0.05        # The minimization step on the structure
+    #minimizer.kong_liu_ratio = 0.5         # The parameter that estimates whether the ensemble is still good
+    #minimizer.meaningful_factor = 0.000001 # How much small the gradient should be before I stop?
+    minimizer.set_minimization_step(0.01)
 
     # Let's start the minimization
 
