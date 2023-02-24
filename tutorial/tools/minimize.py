@@ -124,7 +124,6 @@ def sscha_run(POPULATION=1, N_RANDOM=100, SUPERCELL= (2,2,2), T=50, NQIRR=10):
 
     namefile='dyn_end_population'+str(POPULATION)+'_'
     minimizer.dyn.save_qe(namefile)
-    return 0
 
     path = './pop'+str(POPULATION+1)+'/dyn'
     # Check whether the specified path exists or not
@@ -135,6 +134,7 @@ def sscha_run(POPULATION=1, N_RANDOM=100, SUPERCELL= (2,2,2), T=50, NQIRR=10):
     #os.makedirs('./pop'+str(POPULATION+1)+'/dyn')
     namefile='./pop'+str(POPULATION+1)+'/dyn/dynq'
     minimizer.dyn.save_qe(namefile)
+    return 0
 
 def main(argv):
     # Read the arguments given in the shell.
