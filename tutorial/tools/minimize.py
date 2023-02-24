@@ -74,8 +74,8 @@ def sscha_run(POPULATION=1, N_RANDOM=100, SUPERCELL= (2,2,2), T=50, NQIRR=10):
 
     #minimizer.min_step_dyn = 0.5 #0.005         # The minimization step on the dynamical matrix
     #minimizer.min_step_struc = 0.5 #0.05        # The minimization step on the structure
-    #minimizer.kong_liu_ratio = 0.5         # The parameter that estimates whether the ensemble is still good
-    #minimizer.meaningful_factor = 0.000001 # How much small the gradient should be before I stop?
+    #minimizer.kong_liu_ratio = 0.5              # The parameter that estimates whether the ensemble is still good
+    #minimizer.meaningful_factor = 0.000001      # How much small the gradient should be before I stop?
     minimizer.set_minimization_step(0.01)
 
     # Let's start the minimization
@@ -137,25 +137,7 @@ def sscha_run(POPULATION=1, N_RANDOM=100, SUPERCELL= (2,2,2), T=50, NQIRR=10):
     minimizer.dyn.save_qe(namefile)
 
 def main(argv):
-    # try:
-    #     opts, args = getopt.getopt(argv,"hi:o:",["ipop=","iconf=","icell=","itemp=","inqirr="])
-    # except getopt.GetoptError:
-    #     print ('minimize.py -pop <population> -nconf <number of configurations> -cell <cell size> -temp <Temperature> -nqirr <number of irreducible q points>')
-    # for opt, arg in opts:
-    #     if opt == '-h':
-    #         print ('minimnize.py -pop <population> -nconf <number of configurations> -cell <cell size)> -temp <Temperature> -nqirr <number of irreducible q points>')
-    #         sys.exit()
-    #     elif opt in ("-pop", "--ipop"):
-    #         POPULATION = arg
-    #     elif opt in ("-nconf", "--iconf"):
-    #         N_RANDOM = arg
-    #     elif opt in ("-cell", "--icell"):
-    #         SUPERCELL_SIZE = arg
-    #     elif opt in ("-temp", "--itemp"):
-    #         T = arg
-    #     elif opt in ("-nqirr", "--inqirr"):
-    #         NQIRR = arg
-    # SUPERCELL = (SUPERCELL_SIZE SUPERCELL_SIZE,SUPERCELL_SIZE,SUPERCELL_SIZE)
+    # Read the arguments given in the shell. 
     argParser = argparse.ArgumentParser()
     argParser.add_argument("-pop", "--POPULATION", type=int, help="Population number")
     argParser.add_argument("-nconf", "--N_RANDOM", type=int, help="Number of configurations")
