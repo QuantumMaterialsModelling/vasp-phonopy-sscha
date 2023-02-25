@@ -21,22 +21,25 @@
 #
 runner=True
 POPULATION=1
-if [[ $POPULATION -ne 1 ]]
-then
-  kong_liu_1=`grep "Kong-Liu" minim1.out|head -1`
-  kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1`
-else
-  kong_liu_1=1
-  kong_liu_2=1
-fi
 kong_liu_ratio=0.5
-echo "============================="
-echo "Population="$POPULATION
-echo "Kong-Liu ratio="$kong_liu_ratio
-echo "============================="
 while [[ $runner = 'True' ]]
 do
-  if [[ $(($kong_liu_1/$kong_liu_2)) > $kong_liu_ratio ]]
+  if [[ $POPULATION -ne 1 ]]
+  then
+    kong_liu_1=`grep "Kong-Liu" minim1.out|head -1`
+    kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1`
+  else
+    kong_liu_1=1
+    kong_liu_2=0.4
+  fi
+
+  echo "============================="
+  echo "Population="$POPULATION
+  echo "Kong-Liu ratio="$kong_liu_ratio
+  echo "============================="
+  nkong_liu=echo "$kong_liu_2 / $kong_liu_1" | bc -l
+
+  if [[ $nkong_liu > $kong_liu_ratio ]]
   then
     bash run_local.sh $POPULATION
     ((POPULATION++))
