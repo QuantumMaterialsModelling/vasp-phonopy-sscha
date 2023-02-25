@@ -66,8 +66,8 @@ echo "----------------------------------------"
 #for i in `seq 1 $POPULATION`; do grep "Kong-liu" minim$i.out|tail -1;done
 #grep "Kong-Liu" minim1.out|head -1;echo "--------";for i in `seq 1 12`;do grep "Kong-Liu" minim$i.out|tail -1;done
 #echo "if those numbers are withing error (first one divided by last one less than KL ratio), continue with the VASP calculation"
-kong_liu_1=`grep "Kong-Liu" minim1.out|head -1`
-kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1`
+kong_liu_1=`grep "Kong-Liu" minim1.out|head -1 | awk '{print $NF}'`
+kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
 echo "If this formula is OK, then you are converged:"
 echo $(($kong_liu_1/$kong_liu_2))">"$kong_liu_ratio"?"
 if [$(($kong_liu_1/$kong_liu_2)) -le $kong_liu_ratio]
