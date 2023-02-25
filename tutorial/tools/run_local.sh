@@ -70,35 +70,59 @@ kong_liu_1=`grep "Kong-Liu" minim1.out|head -1 | awk '{print $NF}'`
 kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
 echo "If this formula is OK, then you are converged:"
 echo $(($kong_liu_1/$kong_liu_2))">"$kong_liu_ratio"?"
-if [$(($kong_liu_1/$kong_liu_2)) -le $kong_liu_ratio]
-then
-  echo "---------------------------------------"
-  echo "Now is time to do the VASP calculations"
-  echo "---------------------------------------"
-  echo "Change directory to "pop$(($POPULATION+1))"/vasp"
-  cd pop$(($POPULATION+1))/vasp
-  echo "========"+`pwd`+"======="
-  #########################################################################
-  #np=40           #number of cpus
-  #POPULATION=1    #population index
-  #IONS=54         #number of atoms in the supercells
-  #NCONFSSHA=300   #number of configurations in the sscha ensemble
-  #mpirun vasp_std > stdout
-  for i in `seq 1 $NCONFSSCHA`; do
-      echo -ne "---RUN--"$i"--of--"$NCONFSSCHA"\r"
-      echo `date` >> timing
-      cp POSCAR_$i POSCAR
-  #    mpirun -np $np vasp_std > stdout
-      ~/VASP/vasp.6.3.0/bin/vasp_std > stdout
-      grep "energy  without entropy" OUTCAR  >> energies
-      grep "forces" -A $IONS vasprun.xml > forces/forces_population$POPULATION'_'$i.dat
-      rm POSCAR
-      mv OUTCAR OUTCAR_$i
-      echo `date` >> timing
-  done
-  #########################################################################
-else
-  echo "--------------------------"
-  echo "The calculation converged."
-  echo "--------------------------"
-fi
+# if [$(($kong_liu_1/$kong_liu_2)) -le $kong_liu_ratio]  #THIS DOESN'T WORK!!
+# then
+#   echo "---------------------------------------"
+#   echo "Now is time to do the VASP calculations"
+#   echo "---------------------------------------"
+#   echo "Change directory to "pop$(($POPULATION+1))"/vasp"
+#   cd pop$(($POPULATION+1))/vasp
+#   echo "========"+`pwd`+"======="
+#   #########################################################################
+#   #np=40           #number of cpus
+#   #POPULATION=1    #population index
+#   #IONS=54         #number of atoms in the supercells
+#   #NCONFSSHA=300   #number of configurations in the sscha ensemble
+#   #mpirun vasp_std > stdout
+#   for i in `seq 1 $NCONFSSCHA`; do
+#       echo -ne "---RUN--"$i"--of--"$NCONFSSCHA"\r"
+#       echo `date` >> timing
+#       cp POSCAR_$i POSCAR
+#   #    mpirun -np $np vasp_std > stdout
+#       ~/VASP/vasp.6.3.0/bin/vasp_std > stdout
+#       grep "energy  without entropy" OUTCAR  >> energies
+#       grep "forces" -A $IONS vasprun.xml > forces/forces_population$POPULATION'_'$i.dat
+#       rm POSCAR
+#       mv OUTCAR OUTCAR_$i
+#       echo `date` >> timing
+#   done
+#   #########################################################################
+# else
+#   echo "--------------------------"
+#   echo "The calculation converged."
+#   echo "--------------------------"
+# fi
+echo "---------------------------------------"
+echo "Now is time to do the VASP calculations"
+echo "---------------------------------------"
+echo "Change directory to "pop$(($POPULATION+1))"/vasp"
+cd pop$(($POPULATION+1))/vasp
+echo "========"+`pwd`+"======="
+#########################################################################
+#np=40           #number of cpus
+#POPULATION=1    #population index
+#IONS=54         #number of atoms in the supercells
+#NCONFSSHA=300   #number of configurations in the sscha ensemble
+#mpirun vasp_std > stdout
+for i in `seq 1 $NCONFSSCHA`; do
+    echo -ne "---RUN--"$i"--of--"$NCONFSSCHA"\r"
+    echo `date` >> timing
+    cp POSCAR_$i POSCAR
+#    mpirun -np $np vasp_std > stdout
+    ~/VASP/vasp.6.3.0/bin/vasp_std > stdout
+    grep "energy  without entropy" OUTCAR  >> energies
+    grep "forces" -A $IONS vasprun.xml > forces/forces_population$POPULATION'_'$i.dat
+    rm POSCAR
+    mv OUTCAR OUTCAR_$i
+    echo `date` >> timing
+done
