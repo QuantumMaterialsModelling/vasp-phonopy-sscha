@@ -37,7 +37,7 @@ do
   echo "Population="$POPULATION
   echo "Kong-Liu ratio="$kong_liu_ratio
   echo "============================="
-  nkong_liu=echo "$kong_liu_2 / $kong_liu_1" | bc -l
+  nkong_liu=`echo "$kong_liu_2 / $kong_liu_1" | bc -l`
 
   if [[ $nkong_liu > $kong_liu_ratio ]]
   then
