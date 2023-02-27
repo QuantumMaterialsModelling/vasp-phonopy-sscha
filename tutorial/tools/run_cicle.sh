@@ -39,7 +39,8 @@ do
   echo "============================="
   nkong_liu=`echo "$kong_liu_2 / $kong_liu_1" | bc -l`
 
-  if [[ $nkong_liu > $kong_liu_ratio ]]
+#  if [[ $nkong_liu > $kong_liu_ratio ]]
+  if [[ $POPULATION -le 5 ]]  #test
   then
     bash run_local.sh $POPULATION
     ((POPULATION++))
