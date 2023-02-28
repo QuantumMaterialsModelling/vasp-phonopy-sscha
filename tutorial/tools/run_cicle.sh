@@ -26,8 +26,8 @@ while [[ $runner = 'True' ]]
 do
   if [[ $POPULATION -ne 1 ]]
   then
-    kong_liu_1=`grep "Kong-Liu" minim1.out|head -1`
-    kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1`
+    kong_liu_1=`grep "Kong-Liu" minim1.out|head -1 | awk '{print $NF}'`
+    kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
   else
     kong_liu_1=1
     kong_liu_2=0.4
