@@ -54,7 +54,7 @@ cp ../POSCAR_UNITCELL POSCAR
 python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --to_vasp $(($POPULATION+1)) $SUPERCELL_SIZE
 cp ../INCAR.sc vasp/INCAR
 cp ../POTCAR.SrOTi vasp/POTCAR
-ln -s ../ML_FF vasp/ML_FF
+cp ../ML_FF vasp/ML_FF
 mkdir vasp/forces
 echo "============================="
 echo "Change directory back"
@@ -126,3 +126,4 @@ for i in `seq 1 $NCONFSSCHA`; do
     mv OUTCAR OUTCAR_$i
     echo `date` >> timing
 done
+rm ML_FF
