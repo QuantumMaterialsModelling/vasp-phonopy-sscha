@@ -54,7 +54,7 @@ cp ../POSCAR_UNITCELL POSCAR
 python ../../vasp-phonopy-sscha/vasp-phonopy-sscha/interface.py --to_vasp $(($POPULATION+1)) $SUPERCELL_SIZE
 cp ../INCAR.sc vasp/INCAR
 cp ../POTCAR.SrOTi vasp/POTCAR
-cp ../ML_FF vasp/ML_FF
+ln -s ../ML_FF vasp/ML_FF
 mkdir vasp/forces
 echo "============================="
 echo "Change directory back"
