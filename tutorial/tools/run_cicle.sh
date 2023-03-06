@@ -21,30 +21,14 @@
 #
 runner=True
 POPULATION=1
-kong_liu_ratio=0.5
 while [[ $runner = 'True' ]]
 do
-  if [[ $POPULATION -ne 1 ]]
-  then
-    kong_liu_1=`grep "Kong-Liu" minim1.out|head -1 | awk '{print $NF}'`
-    kong_liu_2=`grep "Kong-Liu" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
-  else
-    kong_liu_1=1
-    kong_liu_2=0.4
-  fi
-
   echo "============================="
   echo "Population="$POPULATION
-  echo "Kong-Liu ratio="$kong_liu_ratio
   echo "============================="
-  nkong_liu=`echo "$kong_liu_2 / $kong_liu_1" | bc -l`
-
-#  if [[ $nkong_liu > $kong_liu_ratio ]]
-  if [[ $POPULATION -le 5 ]]  #test
-  then
-    bash run_local.sh $POPULATION
-    ((POPULATION++))
-  else
-    runner=False
-  fi
+  convergence=`grep "SSCHA converge" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
+  case $convergence in
+   (True)  echo "OK";runner=False;;
+   (False) echo "NOT-OK";bash run_local.sh $POPULATION;((POPULATION++));;
+  esac
 done
