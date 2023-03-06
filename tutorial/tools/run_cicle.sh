@@ -20,10 +20,11 @@
 #  MA 02110-1301, USA.
 #
 runner=True
-POPULATION=1
+Start_POPULATION=1
+POPULATION=$Start_POPULATION
 while [[ $runner = 'True' ]]
 do
-  if [[ $POPULATION -eq 1 ]]
+  if [[ $POPULATION -eq $Start_POPULATION ]]
   then
       convergence="False"
   else
