@@ -23,13 +23,12 @@ runner=True
 POPULATION=1
 while [[ $runner = 'True' ]]
 do
-  if [[ $POPULATION -eq 20 ]]
+  if [[ $POPULATION -eq 1 ]]
   then
       convergence="False"
   else
       convergence=`grep "SSCHA converge" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
   fi
-
   echo "============================="
   echo "Population="$POPULATION
   echo "Convergence="$convergence
