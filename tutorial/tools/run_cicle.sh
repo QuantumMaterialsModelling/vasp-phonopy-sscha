@@ -36,7 +36,14 @@ do
   echo "============================="
   convergence=`grep "SSCHA converge" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
   case $convergence in
-   (True)  echo "OK";runner=False;;
-   (False) echo "NOT-OK";bash run_local.sh $POPULATION;((POPULATION++));;
+   (True)
+       echo "OK"
+       runner=False
+       ;;
+   (False)
+       echo "NOT-OK"
+       bash run_local.sh $POPULATION
+       ((POPULATION++))
+       ;;
   esac
 done
