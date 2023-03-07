@@ -34,16 +34,23 @@ do
   echo "Population="$POPULATION
   echo "Convergence="$convergence
   echo "============================="
-  convergence=`grep "SSCHA converge" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
-  case $convergence in
-   (True)
-       echo "OK"
-       runner=False
-       ;;
-   (False)
-       echo "NOT-OK"
-       bash run_local.sh $POPULATION
-       ((POPULATION++))
-       ;;
-  esac
+  # convergence=`grep "SSCHA converge" minim$POPULATION.out|tail -1 | awk '{print $NF}'`
+  # case $convergence in
+  #  (True)
+  #      echo "OK"
+  #      runner=False
+  #      ;;
+  #  (False)
+  #      echo "NOT-OK"
+  #      bash run_local.sh $POPULATION
+  #      ((POPULATION++))
+  #      ;;
+  # esac
+  if [[ $POPULATION -le 5 ]]
+  then
+    bash run_local.sh $POPULATION
+    ((POPULATION++))
+  else
+    runner=False
+  fi
 done
