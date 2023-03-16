@@ -26,7 +26,7 @@ NCONFSSCHA=300      #number of configurations in the sscha ensemble
 NQIRR=4             #number of irreducible q points
 IONS=54             #number of atoms in the supercells
 PATH_interface="../../vasp-phonopy-sscha/vasp-phonopy-sscha" #change it if needed
-PATH_vasp="~/VASP/vasp.6.3.0/bin"
+#PATH_vasp="~/VASP/vasp.6.3.0/bin"
 echo "============================="
 echo "Population="$POPULATION
 echo "Supercell size="$SUPERCELL_SIZE
@@ -78,7 +78,7 @@ for i in `seq 1 $NCONFSSCHA`; do
     echo `date` >> timing
     cp POSCAR_$i POSCAR
 #    mpirun -np $np vasp_std > stdout
-    $PATH_vasp/vasp_std > stdout
+    ~/VASP/vasp.6.3.0/bin/vasp_std > stdout
     grep "energy  without entropy" OUTCAR  >> energies
     grep "forces" -A $IONS vasprun.xml > forces/forces_population$(($POPULATION+1))'_'$i.dat
     rm POSCAR
