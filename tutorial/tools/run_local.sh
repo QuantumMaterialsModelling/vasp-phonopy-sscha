@@ -20,11 +20,10 @@
 #  MA 02110-1301, USA.
 #
 POPULATION=$1       #population index
-SUPERCELL_SIZE=2
-TEMPERATURE=300
-NCONFSSCHA=512      #number of configurations in the sscha ensemble
+SUPERCELL_SIZE=3
+TEMPERATURE=0
+NCONFSSCHA=300      #number of configurations in the sscha ensemble
 NQIRR=4             #number of irreducible q points
-kong_liu_ratio=0.5  # The parameter that estimates whether the ensemble is still good
 IONS=54             #number of atoms in the supercells
 PATH_interface="../../vasp-phonopy-sscha/vasp-phonopy-sscha" #change it if needed
 PATH_vasp="~/VASP/vasp.6.3.0/bin"
