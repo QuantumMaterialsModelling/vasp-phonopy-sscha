@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 from __future__ import division
 
@@ -67,6 +69,18 @@ def generate(parsed_args=None,n_random=None, n_population=None, NQIRR=None, T=No
     else:
         print("\nThis is not a valid answer, try again\n")
     ################################
+    ################################SOBOL?
+    while (True):
+        bool = input("You want to use the Sobol sequence for the configurations? y/n\n")
+        if bool == 'y':
+            Sobolflag = True
+            break
+        elif bool == 'n':
+            Sobolflag = False
+            break
+        else:
+            print("\nThis is not a valid answer, try again\n")
+    #################################
     dyn.Symmetrize()
     # dyn.save_qe("dyn_positive")
     print("The loaded dynamical matrix has a supercell of", dyn.GetSupercell())
@@ -78,18 +92,14 @@ def generate(parsed_args=None,n_random=None, n_population=None, NQIRR=None, T=No
     ens = sscha.Ensemble.Ensemble(dyn, T, dyn.GetSupercell())  # (((dyn->new_dyn)
     # Evenodd keyword is used to reduce the stochastic noise, by generating symmetric configurations
     # Around the centroid positions. It requires an even ensemble or the code will complain.
-    ens.generate(n_random, evenodd=True)
+    ens.generate(n_random, evenodd=True, sobol = Sobolflag)
 
     print("")
     print("Saving the ensemble into {}, with id = {}...".format(DATA_DIR, n_population))
     ens.save(DATA_DIR, n_population)
 
     print("Done.")
-    os.system("rm dyn*")
+    #os.system("rm dyn*")
     os.system("mkdir data/position")
     os.system("mv data/scf_pop* data/position")
     return n_random, n_population, NQIRR
-
-
-
-

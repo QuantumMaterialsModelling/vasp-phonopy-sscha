@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import pandas as pd
 
 def en_processing(pop_id=1):
