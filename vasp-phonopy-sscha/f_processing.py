@@ -16,7 +16,7 @@ def f_processing(parsed_args,atom_occurrencies,type_atoms):
         print(file)
         forces = pd.read_csv(file, engine='python', sep="\s+", skiprows=1, header=None)
         forces.drop([0, 4], axis=1, inplace=True)
-        forces[3] = pd.to_numeric(forces[3], downcast="float")
+        #forces[3] = pd.to_numeric(forces[3], downcast="float")   #what do this do???
         forces = forces * 0.0388937935
         #forces = forces * 0.02058171960
         processed_forces_path = f"data/forces_population{pop_id}_" + str(a) + ".dat"
