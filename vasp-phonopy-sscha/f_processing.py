@@ -21,13 +21,13 @@ def f_processing(parsed_args,atom_occurrencies,type_atoms):
         #forces = forces * 0.02058171960
         processed_forces_path = f"data/forces_population{pop_id}_" + str(a) + ".dat"
         f = open(processed_forces_path, "w+")
-        forces.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
-        # N = int(n)*int(n)*int(n)
-        # for i in range(0, N):
-        #     for j in range(0, len(atom_occurrencies)):
-        #         for k in range(0,atom_occurrencies[j]):
-        #             force = forces.iloc[N * int(np.sum(atom_occurrencies[0:j])-atom_occurrencies[j]) + atom_occurrencies[j]*i + k]
-        #             force = force.to_frame()
-        #             force = force.transpose()
-        #             force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+        #forces.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+        N = int(n)*int(n)*int(n)
+        for i in range(0, N):
+            for j in range(0, len(atom_occurrencies)):
+                for k in range(0,atom_occurrencies[j]):
+                    force = forces.iloc[N * int(np.sum(atom_occurrencies[0:j])-atom_occurrencies[j]) + atom_occurrencies[j]*i + k]
+                    force = force.to_frame()
+                    force = force.transpose()
+                    force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
 ############### everything alright, maybe read the dynamical matrix file instead of the POSCAR!
