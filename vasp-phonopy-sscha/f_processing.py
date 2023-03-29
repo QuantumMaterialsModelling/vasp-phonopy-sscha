@@ -24,10 +24,37 @@ def f_processing(parsed_args,atom_occurrencies,type_atoms):
         #forces.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
         N = int(n)*int(n)*int(n)
         for i in range(0, N):
-            for j in range(0, len(atom_occurrencies)):
-                for k in range(0,atom_occurrencies[j]):
-                    force = forces.iloc[N * int(np.sum(atom_occurrencies[0:j])-atom_occurrencies[j]) + atom_occurrencies[j]*i + k]
-                    force = force.to_frame()
-                    force = force.transpose()
-                    force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+            #quickfix for SrTiO3
+            print(i,N,"[",i+1,"*",i+N+1,"*",3*i+2*N+1,"*",3*i+2*N+2,"*",3*i+2*N+3,"]")
+
+            force =  forces.iloc[i+1-1]
+            force = force.to_frame()
+            force = force.transpose()
+            force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+
+            force = forces.iloc[i+N+1-1]
+            force = force.to_frame()
+            force = force.transpose()
+            force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+
+            force = forces.iloc[3*i+2*N+1-1]
+            force = force.to_frame()
+            force = force.transpose()
+            force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+
+            force = forces.iloc[3*i+2*N+2-1]
+            force = force.to_frame()
+            force = force.transpose()
+            force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+
+            force = forces.iloc[3*i+2*N+3-1]
+            force = force.to_frame()
+            force = force.transpose()
+            force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+            # for j in range(0, len(atom_occurrencies)):
+            #     for k in range(0,atom_occurrencies[j]):
+            #         force = forces.iloc[N * int(np.sum(atom_occurrencies[0:j])-atom_occurrencies[j]) + atom_occurrencies[j]*i + k]
+            #         force = force.to_frame()
+            #         force = force.transpose()
+            #         force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
 ############### everything alright, maybe read the dynamical matrix file instead of the POSCAR!
