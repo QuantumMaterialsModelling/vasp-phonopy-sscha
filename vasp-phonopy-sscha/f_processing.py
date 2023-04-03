@@ -23,12 +23,22 @@ def f_processing(parsed_args,atom_occurrencies,type_atoms):
         f = open(processed_forces_path, "w+")
         #forces.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
         N = int(n)*int(n)*int(n)
+        # for i in range(0, N):
+        #     for j in range(0,int(np.sum(atom_occurrencies))):
+        #         force =  forces.iloc[i+j*N+1-1]
+        #         force = force.to_frame()
+        #         force = force.transpose()
+        #         force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+        # # FIXME:
         for i in range(0, N):
-            for j in range(0,int(np.sum(atom_occurrencies))):
-                force =  forces.iloc[i+j*N+1-1]
-                force = force.to_frame()
-                force = force.transpose()
-                force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+            for j in range(len(type_atoms)):
+                for jj in range(0,int(atom_occurrencies[j])):
+                    print("[",atom_occurrencies[j]*i+j*N+jj,"]")
+                    force =  forces.iloc[atom_occurrencies[j]*i+j*N+jj]
+                    force = force.to_frame()
+                    force = force.transpose()
+                    force.to_csv(f, index=False, header=False, float_format="%16.12f", sep='\t', mode="w+")
+
             # #quickfix for SrTiO3
             # print(i,N,"[",i+1,"*",i+N+1,"*",3*i+2*N+1,"*",3*i+2*N+2,"*",3*i+2*N+3,"]")
             #
