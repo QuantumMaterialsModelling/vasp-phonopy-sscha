@@ -229,6 +229,7 @@ class Poscar():
             f.write(f"{index*int(qpoints[0])*int(qpoints[0])*int(qpoints[0])}   ")
         f.write("\n")
         f.write("Cartesian")
+#        f.write("Direct")
 
         for atom in self.run.type_atoms:
             for index in range(self.run.n_atoms*int(qpoints[0])*int(qpoints[0])*int(qpoints[0])):
